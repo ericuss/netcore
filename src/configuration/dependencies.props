@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup Label="SDK Versions">
+    <NetStandardTargetVersion>netstandard2.1</NetStandardTargetVersion>
+    <NetCoreTargetVersion>netcoreapp2.1</NetCoreTargetVersion> 
+  </PropertyGroup>
+</Project>
