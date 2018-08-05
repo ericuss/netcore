@@ -1,11 +1,13 @@
-﻿namespace Lanre.Clients.Host
+﻿
+namespace Lanre.Clients.Host
 {
-    using Infrastructure.Entities.Configuration;
+    using System.Reflection;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Infrastructure.Entities.Configuration;
 
     public class Startup
     {
@@ -21,6 +23,15 @@
                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                .AddEnvironmentVariables();
+
+            if (env.IsDevelopment())
+            {
+                var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
+                if (appAssembly != null)
+                {
+                    configBuilder.AddUserSecrets(appAssembly, optional: true);
+                }
+            }
 
             var builder = configBuilder.Build();
             this._appSettings = builder.Get<Settings>();
