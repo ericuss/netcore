@@ -6,16 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\infrastructure\Lanre.Infrastructure\Lanre.Infrastructure.csproj" />
+    <ProjectReference Include="..\Lanre.Clients.Api\Lanre.Clients.Api.csproj" />
   </ItemGroup>
 
 </Project>

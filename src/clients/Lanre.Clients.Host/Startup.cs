@@ -1,5 +1,4 @@
-﻿
-namespace Lanre.Clients.Host
+﻿namespace Lanre.Clients.Host
 {
     using System.Reflection;
     using Microsoft.AspNetCore.Builder;
@@ -7,6 +6,7 @@ namespace Lanre.Clients.Host
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Api;
     using Infrastructure.Entities.Configuration;
 
     public class Startup
@@ -41,6 +41,7 @@ namespace Lanre.Clients.Host
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureServicesApi();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,10 +52,11 @@ namespace Lanre.Clients.Host
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            app.ConfigureApi()
+               .Run(async (context) =>
+               {
+                   await context.Response.WriteAsync("Hello World!");
+               });
         }
     }
 }

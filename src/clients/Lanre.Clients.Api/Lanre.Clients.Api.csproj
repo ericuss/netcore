@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(NetStandardTargetVersion)</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ApiExplorer" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\infrastructure\Lanre.Infrastructure\Lanre.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
