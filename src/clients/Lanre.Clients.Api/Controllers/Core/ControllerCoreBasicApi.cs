@@ -37,8 +37,11 @@ namespace Lanre.Clients.Api.Controllers.Core
         [HttpPost]
         [SwaggerResponse(StatusCodes.Status201Created, "Entity has created", typeof(Appointment))]
         [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "Argument is not valid", typeof(ArgumentException))]
         public IActionResult Post([FromBody] TCreateModel objectTEntityoCreate)
         {
+            if (!this.ModelState.IsValid) throw new ArgumentException();
+
             if (objectTEntityoCreate == null) this.NotFound();
 
             var entityMapped = this.CreateEntity(objectTEntityoCreate);
@@ -51,8 +54,12 @@ namespace Lanre.Clients.Api.Controllers.Core
         [HttpPut("{id}")]
         [SwaggerResponse(StatusCodes.Status200OK, "Entity has updated", typeof(Appointment))]
         [SwaggerResponse(StatusCodes.Status404NotFound)]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError, "Argument is not valid", typeof(ArgumentException))]
         public IActionResult Put(Guid id, [FromBody] TCreateModel objectTEntityoUpdate)
         {
+
+            if (!this.ModelState.IsValid) throw new ArgumentException();
+
             var result = Data.FirstOrDefault(x => x.Id == id);
 
             if (result == null) this.NotFound();

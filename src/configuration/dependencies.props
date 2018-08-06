@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package Versions">    
+    <FluentValidationAspNetCorePackageVersion>7.6.104</FluentValidationAspNetCorePackageVersion>
     <SwashbuckleAspNetCorePackageVersion>3.0.0</SwashbuckleAspNetCorePackageVersion>
     <SwashbuckleAspNetCoreAnnotationsPackageVersion>3.0.0</SwashbuckleAspNetCoreAnnotationsPackageVersion>
   </PropertyGroup>

@@ -1,4 +1,7 @@
-﻿namespace Lanre.Clients.Api
+﻿using FluentValidation.AspNetCore;
+using Lanre.Clients.Api.Models.Appointment;
+
+namespace Lanre.Clients.Api
 {
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.AspNetCore.Builder;
@@ -11,6 +14,7 @@
                 .AddMvcCore()
                 .AddJsonFormatters()
                 .AddApiExplorer()
+                .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<AppointmentCreateValidator>())
                 .Services;
         }
 
