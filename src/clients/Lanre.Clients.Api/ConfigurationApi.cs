@@ -1,6 +1,5 @@
 ﻿namespace Lanre.Clients.Api
 {
-    using System;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.AspNetCore.Builder;
 
@@ -17,8 +16,7 @@
 
         public static IApplicationBuilder ConfigureApi(this IApplicationBuilder app)
         {
-            return app.UseMvc();
-            //.UseMvcCore(routes => routes.MapRoute("swagger", "{controller=DotNet}/{action=Swagger}"));
+            return app.UseMvc(routes => routes.MapRoute("swagger", "{controller=Home}/{action=Swagger}"));
         }
     }
 }

@@ -1,10 +1,14 @@
-﻿namespace Lanre.Clients.Api.Controllers.Core
+﻿
+namespace Lanre.Clients.Api.Controllers.Core
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Http;
+    using Swashbuckle.AspNetCore.Annotations;
     using Lanre.Infrastructure.Entities.Core;
+    using Infrastructure.Entities;
 
     public abstract class ControllerCoreBasicApi<TEntity, TCreateModel> : ControllerCore
     where TEntity : EntityCore
@@ -12,12 +16,15 @@
         protected static IList<TEntity> Data = new List<TEntity>();
 
         [HttpGet]
+        [SwaggerResponse(StatusCodes.Status200OK, "Get entity", typeof(IEnumerable<Appointment>))]
         public IActionResult Get()
         {
             return this.Ok(Data);
         }
 
         [HttpGet("{id}")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Get entity by id", typeof(Appointment))]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
         public IActionResult Get(Guid id)
         {
             var result = Data.FirstOrDefault(x => x.Id == id);
@@ -28,6 +35,8 @@
         }
 
         [HttpPost]
+        [SwaggerResponse(StatusCodes.Status201Created, "Entity has created", typeof(Appointment))]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
         public IActionResult Post([FromBody] TCreateModel objectTEntityoCreate)
         {
             if (objectTEntityoCreate == null) this.NotFound();
@@ -36,10 +45,12 @@
 
             Data.Add(entityMapped);
 
-            return this.Ok(entityMapped);
+            return this.Created($"Entity/{entityMapped.Id.ToString()}", entityMapped);
         }
 
         [HttpPut("{id}")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Entity has updated", typeof(Appointment))]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
         public IActionResult Put(Guid id, [FromBody] TCreateModel objectTEntityoUpdate)
         {
             var result = Data.FirstOrDefault(x => x.Id == id);
@@ -52,6 +63,8 @@
         }
 
         [HttpDelete("{id}")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Entity has deleted", typeof(Appointment))]
+        [SwaggerResponse(StatusCodes.Status404NotFound)]
         public IActionResult Delete(Guid id)
         {
             var result = Data.FirstOrDefault(x => x.Id == id);
