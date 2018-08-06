@@ -2,8 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     
-    [Route("api/[controller]")]
-    public class ValuesController : CoreController
+    public class ValuesController : ControllerCore
     {
         [HttpGet]
         public IActionResult Get()

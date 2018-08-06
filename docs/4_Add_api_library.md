@@ -13,4 +13,6 @@
     *   Microsoft.Extensions.DependencyInjection
 5.  Se añade un controller de ejemplo
     * Hay que añadir una data annotation por el controller y especificar los verbos de las funciones
-6.  Se añade un base controller
+6.  Se añade un base controller de momento sin nada
+7.  Se añade otro con las operaciones básicas de una api
+8.  Se añade un ejemplo de controller con la Api añadiendo un proyecto de entidades
