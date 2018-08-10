@@ -1,8 +1,10 @@
-﻿
-namespace Microsoft.Extensions.DependencyInjection
+﻿namespace Microsoft.Extensions.DependencyInjection
 {
+    using System;
+    using System.Reflection;
     using Microsoft.AspNetCore.Builder;
     using Swashbuckle.AspNetCore.Swagger;
+
     public static class SwaggerExtension
     {
         public static IServiceCollection AddCustomSwagger(this IServiceCollection services)
@@ -21,12 +23,20 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        public static IApplicationBuilder UseCustomSwagger(this IApplicationBuilder app)
+        public static IApplicationBuilder UseCustomSwagger(this IApplicationBuilder app, Type type)
         {
             return app.UseSwagger()
                       .UseSwaggerUI(setup =>
                       {
                           setup.SwaggerEndpoint("/swagger/v1/swagger.json", "Lanre");
+                          setup.IndexStream = () => type
+                                                    .GetTypeInfo()
+                                                    .Assembly
+                                                    .GetManifestResourceStream("Lanre.Clients.Host.Resources.Swagger_Custom_index.html");
+                          setup.InjectStylesheet("/lib/profiler/includes.css");
+                          setup.InjectJavascript("/lib/profiler/includes.js");
+                          
+
                       });
         }
     }

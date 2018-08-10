@@ -26,11 +26,12 @@
 
             if (env.IsDevelopment())
             {
-                var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
-                if (appAssembly != null)
-                {
-                    configBuilder.AddUserSecrets(appAssembly, optional: true);
-                }
+                //var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
+                //Assembly.
+                //if (appAssembly != null)
+                //{
+                    configBuilder.AddUserSecrets<Startup>(optional: true);
+                //}
             }
 
             var builder = configBuilder.Build();
@@ -42,6 +43,8 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureServicesApi()
+                    .AddMemoryCache()
+                    .AddCustomProfiler()
                     .AddCustomSwagger()
                     ;
         }
@@ -53,13 +56,17 @@
             //{
             //    app.UseDeveloperExceptionPage();
             //}
-
-            app.ConfigureApi()
-               .UseCustomSwagger()
-               .Run(async (context) =>
-               {
-                   await context.Response.WriteAsync("Hello World!");
-               });
+            var type = GetType();
+            app
+               .UseStaticFiles()
+               .UseCustomProfiler() 
+               .ConfigureApi()
+               .UseCustomSwagger(type)
+               //.Run(async (context) =>
+               //{
+               //    await context.Response.WriteAsync("Hello World!");
+               //})
+                ;
         }
     }
 }
