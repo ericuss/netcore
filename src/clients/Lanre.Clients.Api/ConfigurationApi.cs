@@ -1,16 +1,17 @@
-﻿using FluentValidation.AspNetCore;
-using Lanre.Clients.Api.Models.Appointment;
-
+﻿
 namespace Lanre.Clients.Api
 {
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.AspNetCore.Builder;
+    using FluentValidation.AspNetCore;
+    using Lanre.Clients.Api.Models.Appointment;
 
     public static class ConfigurationApi
     {
         public static IServiceCollection ConfigureServicesApi(this IServiceCollection services)
         {
             return services
+                .AddCustomApiVersion()
                 .AddMvcCore()
                 .AddJsonFormatters()
                 .AddApiExplorer()

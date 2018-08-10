@@ -26,11 +26,7 @@
 
             if (env.IsDevelopment())
             {
-                var appAssembly = Assembly.Load(new AssemblyName(env.ApplicationName));
-                if (appAssembly != null)
-                {
-                    configBuilder.AddUserSecrets(appAssembly, optional: true);
-                }
+                configBuilder.AddUserSecrets<Startup>(optional: true);
             }
 
             var builder = configBuilder.Build();
@@ -56,10 +52,11 @@
 
             app.ConfigureApi()
                .UseCustomSwagger()
-               .Run(async (context) =>
-               {
-                   await context.Response.WriteAsync("Hello World!");
-               });
+                //.Run(async (context) =>
+                //{
+                //    await context.Response.WriteAsync("Hello World!");
+                //})
+                ;
         }
     }
 }
