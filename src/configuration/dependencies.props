@@ -4,6 +4,17 @@
     <NetCoreTargetVersion>netcoreapp2.1</NetCoreTargetVersion> 
   </PropertyGroup>
 
+  <PropertyGroup Label="Package Versions Microsoft">    
+    <MicrosoftHttpAbstractionsPackageVersion>2.1.1</MicrosoftHttpAbstractionsPackageVersion>
+    <MicrosoftMvcApiExplorerPackageVersion>2.1.1</MicrosoftMvcApiExplorerPackageVersion>
+    <MicrosoftMvcCorePackageVersion>2.1.1</MicrosoftMvcCorePackageVersion>
+    <MicrosoftMvcFormattersJsonPackageVersion>2.1.1</MicrosoftMvcFormattersJsonPackageVersion>
+    <MicrosoftMvcVersioningPackageVersion>2.3.0</MicrosoftMvcVersioningPackageVersion>
+    <MicrosoftExtensionsDependencyInjectionPackageVersion>2.1.1</MicrosoftExtensionsDependencyInjectionPackageVersion>
+    <MicrosoftExtensionsLoggingPackageVersion>2.1.1</MicrosoftExtensionsLoggingPackageVersion>
+    <MicrosoftExtensionsConfigurationUserSecretsPackageVersion>2.1.1</MicrosoftExtensionsConfigurationUserSecretsPackageVersion>
+  </PropertyGroup>
+
   <PropertyGroup Label="Package Versions">    
     <FluentValidationAspNetCorePackageVersion>7.6.104</FluentValidationAspNetCorePackageVersion>
     <SwashbuckleAspNetCorePackageVersion>3.0.0</SwashbuckleAspNetCorePackageVersion>

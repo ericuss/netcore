@@ -5,16 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.ApiExplorer" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.1.1" />
-    <PackageReference Include="Microsoft.AspnetCore.Mvc.Versioning" Version="2.3.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="$(MicrosoftHttpAbstractionsPackageVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ApiExplorer" Version="$(MicrosoftMvcApiExplorerPackageVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="$(MicrosoftMvcCorePackageVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="$(MicrosoftMvcFormattersJsonPackageVersion)" />
+    <PackageReference Include="Microsoft.AspnetCore.Mvc.Versioning" Version="$(MicrosoftMvcVersioningPackageVersion)" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="$(MicrosoftExtensionsDependencyInjectionPackageVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="$(MicrosoftExtensionsLoggingPackageVersion)" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="$(FluentValidationAspNetCorePackageVersion)" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbuckleAspNetCorePackageVersion)" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleAspNetCoreAnnotationsPackageVersion)" />
   </ItemGroup>
