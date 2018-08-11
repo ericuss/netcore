@@ -16,6 +16,8 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package Versions">    
+    <SerilogExtensionsLoggingPackageVersion>2.0.2</SerilogExtensionsLoggingPackageVersion>
+    <SerilogSinksColoredConsolePackageVersion>3.0.1</SerilogSinksColoredConsolePackageVersion>
     <FluentValidationAspNetCorePackageVersion>7.6.104</FluentValidationAspNetCorePackageVersion>
     <SwashbuckleAspNetCorePackageVersion>3.0.0</SwashbuckleAspNetCorePackageVersion>
     <SwashbuckleAspNetCoreAnnotationsPackageVersion>3.0.0</SwashbuckleAspNetCoreAnnotationsPackageVersion>
