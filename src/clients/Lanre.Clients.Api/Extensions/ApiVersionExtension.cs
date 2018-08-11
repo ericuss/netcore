@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
             return services.AddApiVersioning(options =>
             {
                 options.ApiVersionReader = ApiVersionReader.Combine(
-                                            new QueryStringApiVersionReader("api-version"), 
+                                            new QueryStringApiVersionReader("api-version"),
                                             new HeaderApiVersionReader("api-version")
                                         );
                 options.DefaultApiVersion = new ApiVersion(1, 0);

@@ -1,9 +1,7 @@
 ﻿namespace Lanre.Clients.Host
 {
-    using System.Reflection;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Api;
@@ -22,12 +20,10 @@
                .SetBasePath(env.ContentRootPath)
                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-               .AddEnvironmentVariables();
-
-            if (env.IsDevelopment())
-            {
-                configBuilder.AddUserSecrets<Startup>(optional: true);
-            }
+               .AddEnvironmentVariables()
+               .LoadLoggerConfiguration()
+               .AddIf(env.IsDevelopment(), x => x.AddUserSecrets<Startup>(optional: true))
+                ;
 
             var builder = configBuilder.Build();
             this._appSettings = builder.Get<Settings>();
@@ -37,7 +33,9 @@
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureServicesApi()
+            services
+                    .AddCustomLogger()
+                    .ConfigureServicesApi()
                     .AddCustomSwagger()
                     ;
         }
