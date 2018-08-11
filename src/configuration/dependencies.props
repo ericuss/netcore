@@ -24,6 +24,7 @@
   </PropertyGroup>
   
   <PropertyGroup Label="Package Versions Testing">    
+    <CoverletMsbuildPackageVersion>2.2.1</CoverletMsbuildPackageVersion>
     <MicrosoftNETTestSdkPackageVersion>15.7.0</MicrosoftNETTestSdkPackageVersion>
     <MicrosoftTestHostPackageVersion>2.1.1</MicrosoftTestHostPackageVersion>
     <XunitPackageVersion>2.3.1</XunitPackageVersion>
