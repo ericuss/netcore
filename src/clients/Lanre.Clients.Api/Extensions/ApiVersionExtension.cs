@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.Versioning;
-
+﻿
 namespace Microsoft.Extensions.DependencyInjection
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Versioning;
 
     public static class ApiVersionExtension
     {
@@ -21,10 +21,5 @@ namespace Microsoft.Extensions.DependencyInjection
             });
 
         }
-
-        //public static IApplicationBuilder UseCustomSwagger(this IApplicationBuilder app)
-        //{
-        //    return app;
-        //}
     }
 }

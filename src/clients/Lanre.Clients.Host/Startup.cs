@@ -34,6 +34,7 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services
+                    .AddCustomHttps(this._appSettings)
                     .AddCustomLogger()
                     .ConfigureServicesApi()
                     .AddCustomSwagger()
@@ -50,6 +51,7 @@
 
             app
                 .UseCustomErrorHandler()
+                .UseCustomHttps(env)
                 .ConfigureApi()
                 .UseCustomSwagger()
                 //.Run(async (context) =>
