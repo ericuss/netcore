@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Lanre.Clients.Api.Controllers.V1
 {
@@ -10,12 +11,17 @@ namespace Lanre.Clients.Api.Controllers.V1
     [ApiVersion("1.0", Deprecated = false)]
     //[ApiVersion("2.0")]
     //[Route("api/v{version:apiVersion}/[controller]")
-    public class AppointmentController : ControllerCoreBasicApi<Appointment, AppointmentCreate>
+    public class AppointmentController : ControllerCoreBasicApi<AppointmentController, Appointment, AppointmentCreate>
     {
+        public AppointmentController(ILogger<AppointmentController> logger) : base(logger)
+        {
+        }
+
         [HttpGet("info")]
         [MapToApiVersion("1.0")]
         public IActionResult Info()
         {
+            _logger.LogInformation($"Get info");
             return this.Ok("information");
         }
 

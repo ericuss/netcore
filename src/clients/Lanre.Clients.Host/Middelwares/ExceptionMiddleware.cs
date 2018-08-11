@@ -4,13 +4,16 @@ namespace Lanre.Clients.Host.Middelwares
     using System.Net;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.Logging;
 
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger<ExceptionMiddleware> _logger;
 
-        public ExceptionMiddleware(RequestDelegate next)
+        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
         {
+            _logger = logger;
             _next = next;
         }
 
@@ -22,6 +25,7 @@ namespace Lanre.Clients.Host.Middelwares
             }
             catch (Exception ex)
             {
+                _logger.LogError($"Something went wrong: {ex}");
                 await HandleExceptionAsync(httpContext, ex);
             }
         }
