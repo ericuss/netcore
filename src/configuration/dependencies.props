@@ -22,4 +22,15 @@
     <SwashbuckleAspNetCorePackageVersion>3.0.0</SwashbuckleAspNetCorePackageVersion>
     <SwashbuckleAspNetCoreAnnotationsPackageVersion>3.0.0</SwashbuckleAspNetCoreAnnotationsPackageVersion>
   </PropertyGroup>
+  
+  <PropertyGroup Label="Package Versions Testing">    
+    <MicrosoftNETTestSdkPackageVersion>15.7.0</MicrosoftNETTestSdkPackageVersion>
+    <MicrosoftTestHostPackageVersion>2.1.1</MicrosoftTestHostPackageVersion>
+    <XunitPackageVersion>2.3.1</XunitPackageVersion>
+    <XunitRunnerVisualStudioPackageVersion>2.3.1</XunitRunnerVisualStudioPackageVersion>
+  </PropertyGroup>
+  
+  <PropertyGroup Label="Tooling">    
+    <DotnetXunit>2.3.1</DotnetXunit>
+  </PropertyGroup>
 </Project>

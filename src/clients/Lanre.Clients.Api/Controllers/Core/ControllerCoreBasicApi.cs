@@ -39,10 +39,13 @@
             _logger.LogInformation($"Get {typeof(TEntity)} by id: {id}");
             var result = Data.FirstOrDefault(x => x.Id == id);
 
-            if (result != null) return this.Ok(result);
+            if (result == null)
+            {
+                _logger.LogWarning($"Not found: Get {typeof(TEntity)} by id: {id}");
+                return this.NotFound();
+            }
 
-            _logger.LogWarning($"Not found: Get {typeof(TEntity)} by id: {id}");
-            return this.NotFound();
+            return this.Ok(result);
 
         }
 

@@ -11,9 +11,9 @@ namespace Lanre.Clients.Api.Controllers.V1
     [ApiVersion("1.0", Deprecated = false)]
     //[ApiVersion("2.0")]
     //[Route("api/v{version:apiVersion}/[controller]")
-    public class AppointmentController : ControllerCoreBasicApi<AppointmentController, Appointment, AppointmentCreate>
+    public class AppointmentsController : ControllerCoreBasicApi<AppointmentsController, Appointment, AppointmentCreate>
     {
-        public AppointmentController(ILogger<AppointmentController> logger) : base(logger)
+        public AppointmentsController(ILogger<AppointmentsController> logger) : base(logger)
         {
         }
 
