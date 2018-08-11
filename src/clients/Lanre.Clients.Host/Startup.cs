@@ -50,8 +50,10 @@
             //    app.UseDeveloperExceptionPage();
             //}
 
-            app.ConfigureApi()
-               .UseCustomSwagger()
+            app
+                .UseCustomErrorHandler()
+                .ConfigureApi()
+                .UseCustomSwagger()
                 //.Run(async (context) =>
                 //{
                 //    await context.Response.WriteAsync("Hello World!");

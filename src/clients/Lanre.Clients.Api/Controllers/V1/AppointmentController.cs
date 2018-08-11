@@ -12,6 +12,13 @@ namespace Lanre.Clients.Api.Controllers.V1
     //[Route("api/v{version:apiVersion}/[controller]")
     public class AppointmentController : ControllerCoreBasicApi<Appointment, AppointmentCreate>
     {
+        [HttpGet("info")]
+        [MapToApiVersion("1.0")]
+        public IActionResult Info()
+        {
+            return this.Ok("information");
+        }
+
         protected override Appointment CreateEntity(AppointmentCreate objectToCreate)
         {
             return new Appointment()
@@ -24,13 +31,6 @@ namespace Lanre.Clients.Api.Controllers.V1
         protected override void UpdateEntity(AppointmentCreate objectToUpdate, Appointment original)
         {
             original.Description = objectToUpdate.Description;
-        }
-
-        [HttpGet("info")]
-        [MapToApiVersion("1.0")]
-        public IActionResult Info()
-        {
-            return this.Ok("information");
         }
     }
 }
