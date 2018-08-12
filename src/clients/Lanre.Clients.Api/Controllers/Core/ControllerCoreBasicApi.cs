@@ -1,4 +1,7 @@
-﻿namespace Lanre.Clients.Api.Controllers.Core
+﻿using Lanre.Infrastructure.Cache;
+using Microsoft.Extensions.Caching.Memory;
+
+namespace Lanre.Clients.Api.Controllers.Core
 {
     using System;
     using System.Collections.Generic;
@@ -17,10 +20,16 @@
     {
         protected static IList<TEntity> Data = new List<TEntity>();
         protected readonly ILogger<TClass> _logger;
+        protected readonly ICustomMemoryCache _cache;
+        protected string _cacheKey_all;
+        protected string _cacheKey_byId;
 
-        protected ControllerCoreBasicApi(ILogger<TClass> logger)
+        protected ControllerCoreBasicApi(ILogger<TClass> logger, ICustomMemoryCache cache)
         {
             _logger = logger;
+            _cache = cache;
+            _cacheKey_all = $"{typeof(TEntity)}_All";
+            _cacheKey_byId = $"{typeof(TEntity)}_byId:";
         }
 
         [HttpGet]
@@ -28,7 +37,18 @@
         public IActionResult Get()
         {
             _logger.LogInformation($"Get list of {typeof(TEntity)}");
-            return this.Ok(Data);
+            _cache.AddKey(_cacheKey_all);
+
+            if (_cache.TryGetValue(_cacheKey_all, out IActionResult cachedResult))
+            {
+                Response.Headers.Add("cache", "cached");
+                return cachedResult;
+            }
+
+            Response.Headers.Add("cache", "non-cached");
+            var result = this.Ok(Data);
+            _cache.Set(_cacheKey_all, result);
+            return result;
         }
 
         [HttpGet("{id}")]
@@ -37,15 +57,31 @@
         public IActionResult Get(Guid id)
         {
             _logger.LogInformation($"Get {typeof(TEntity)} by id: {id}");
-            var result = Data.FirstOrDefault(x => x.Id == id);
 
-            if (result == null)
+            var key = $"{_cacheKey_byId}{id}";
+            _cache.AddKey(key);
+            if (_cache.TryGetValue(key, out IActionResult cacheResult))
             {
-                _logger.LogWarning($"Not found: Get {typeof(TEntity)} by id: {id}");
-                return this.NotFound();
+                Response.Headers.Add("cache", "cached");
+                return cacheResult;
             }
 
-            return this.Ok(result);
+            Response.Headers.Add("cache", "non-cached");
+
+            var entity = Data.FirstOrDefault(x => x.Id == id);
+            IActionResult result;
+            if (entity == null)
+            {
+                _logger.LogWarning($"Not found: Get {typeof(TEntity)} by id: {id}");
+                result = this.NotFound();
+            }
+            else
+            {
+                result = this.Ok(entity);
+            }
+
+            _cache.Set(key, result);
+            return result;
 
         }
 
@@ -67,6 +103,8 @@
             Data.Add(entityMapped);
 
             _logger.LogInformation($"Created {typeof(TEntity)}: {entityMapped}");
+            _cache.Remove(_cacheKey_all);
+            _cache.RemoveKey(_cacheKey_all);
             return this.Created($"Entity/{entityMapped.Id.ToString()}", entityMapped);
         }
 
@@ -94,6 +132,7 @@
             this.UpdateEntity(objectTEntityoUpdate, result);
 
             _logger.LogInformation($"Updated {typeof(TEntity)} id: {id}, entity: {objectTEntityoUpdate}");
+            _cache.RemoveStartingBy(typeof(TEntity).ToString());
             return this.Ok(result);
         }
 
@@ -114,6 +153,7 @@
             Data.Remove(result);
 
             _logger.LogInformation($"Deleted {typeof(TEntity)} by id: {id}");
+            _cache.RemoveStartingBy(typeof(TEntity).ToString());
             return this.Ok(result);
         }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Lanre.Infrastructure.Cache;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace Lanre.Clients.Api.Controllers.V1
@@ -13,7 +14,7 @@ namespace Lanre.Clients.Api.Controllers.V1
     //[Route("api/v{version:apiVersion}/[controller]")
     public class AppointmentsController : ControllerCoreBasicApi<AppointmentsController, Appointment, AppointmentCreate>
     {
-        public AppointmentsController(ILogger<AppointmentsController> logger) : base(logger)
+        public AppointmentsController(ILogger<AppointmentsController> logger, ICustomMemoryCache cache) : base(logger, cache)
         {
         }
 

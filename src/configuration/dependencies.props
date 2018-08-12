@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package Versions Microsoft">    
+    <MicrosoftExtensionsOptionsPackageVersion>2.1.1</MicrosoftExtensionsOptionsPackageVersion>
+    <MicrosoftExtensionsCachingMemoryPackageVersion>2.1.1</MicrosoftExtensionsCachingMemoryPackageVersion>
     <MicrosoftHttpAbstractionsPackageVersion>2.1.1</MicrosoftHttpAbstractionsPackageVersion>
     <MicrosoftMvcApiExplorerPackageVersion>2.1.1</MicrosoftMvcApiExplorerPackageVersion>
     <MicrosoftMvcCorePackageVersion>2.1.1</MicrosoftMvcCorePackageVersion>

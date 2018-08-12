@@ -34,6 +34,7 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services
+                    .AddCustomCache()
                     .AddCustomHttps(this._appSettings)
                     .AddCustomLogger()
                     .ConfigureServicesApi()
