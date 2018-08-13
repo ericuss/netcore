@@ -6,6 +6,7 @@
     using Microsoft.Extensions.Caching.Memory;
     using Microsoft.Extensions.Options;
 
+    // Todo: refactor this shit
     public class CustomMemoryCache : MemoryCache, ICustomMemoryCache
     {
         public static IList<string> _cacheKeys = new List<string>();
@@ -51,7 +52,6 @@
             var keys = _cacheKeys.Where(x => x.StartsWith(startingKey, StringComparison.InvariantCultureIgnoreCase));
             return keys;
         }
-
 
         public void RemoveStartingBy(string startingKey)
         {
