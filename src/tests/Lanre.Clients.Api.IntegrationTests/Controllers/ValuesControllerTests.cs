@@ -1,11 +1,13 @@
-namespace Lanre.Clients.Api.Tests.Controllers
+
+namespace Lanre.Clients.Api.IntegrationTests.Controllers
 {
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Xunit;
+    using Tests.Core;
 
-    public class ControllerCoreBasicApiTests : TestBase
+    public class ControllerCoreBasicApiTests : IntegrationTestBase
     {
         public ControllerCoreBasicApiTests() : base("/api/values") { }
 

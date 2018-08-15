@@ -10,8 +10,10 @@
     <PackageReference Include="coverlet.msbuild" Version="$(CoverletMsbuildPackageVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="$(MicrosoftTestHostPackageVersion)" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(MicrosoftNETTestSdkPackageVersion)" />
+    <PackageReference Include="Moq.EntityFrameworkCore" Version="$(MoqEFPackageVersion)" />
     <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
     <PackageReference Include="xunit.runner.visualstudio" Version="$(XunitRunnerVisualStudioPackageVersion)" />
+    <PackageReference Include="Moq" Version="$(MoqPackageVersion)" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,10 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\clients\Lanre.Clients.Api\Lanre.Clients.Api.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Mocks\" />
+    <ProjectReference Include="..\..\data\Lanre.Data.Context\Lanre.Data.Context.csproj" />
   </ItemGroup>
 
 </Project>

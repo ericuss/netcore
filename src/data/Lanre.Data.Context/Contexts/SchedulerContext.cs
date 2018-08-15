@@ -9,6 +9,6 @@ namespace Lanre.Data.Context.Contexts
     {
         public SchedulerContext(DbContextOptions<SchedulerContext> options, IHostingEnvironment currentEnvironment) : base(options, currentEnvironment) { }
 
-        public DbSet<Appointment> Appointments { get; set; }
+        public virtual DbSet<Appointment> Appointments { get; set; }
     }
 }

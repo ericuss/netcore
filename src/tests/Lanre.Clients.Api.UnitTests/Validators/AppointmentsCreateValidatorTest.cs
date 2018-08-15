@@ -1,5 +1,5 @@
 
-namespace Lanre.Clients.Api.Tests.Validators
+namespace Lanre.Clients.Api.UnitTests.Validators
 {
     using System;   
     using System.Threading.Tasks;

@@ -1,5 +1,4 @@
-
-namespace Lanre.Clients.Api.Tests.Controllers
+namespace Lanre.Clients.Api.IntegrationTests.Controllers
 {
     using System;
     using System.Net;
@@ -7,9 +6,10 @@ namespace Lanre.Clients.Api.Tests.Controllers
     using System.Threading.Tasks;
     using Xunit;
     using Infrastructure.Entities;
+    using Lanre.Tests.Core;
     using Models.Appointment;
 
-    public class AppointmentsControllerTests : TestBase
+    public class AppointmentsControllerTests : IntegrationTestBase
     {
         public AppointmentsControllerTests() : base("/api/appointments") { }
 
