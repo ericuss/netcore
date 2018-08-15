@@ -1,10 +1,12 @@
-﻿namespace Lanre.Clients.Host
+﻿
+namespace Lanre.Clients.Host
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Api;
+    using Data.Context;
     using Infrastructure.Entities.Configuration;
 
     public class Startup
@@ -39,7 +41,10 @@
                     .AddCustomLogger()
                     .ConfigureServicesApi()
                     .AddCustomSwagger()
+                    .AddContext(this._appSettings)
                     ;
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

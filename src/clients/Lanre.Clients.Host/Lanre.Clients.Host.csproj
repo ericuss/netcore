@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\infrastructure\Lanre.Infrastructure\Lanre.Infrastructure.csproj" />
     <ProjectReference Include="..\Lanre.Clients.Api\Lanre.Clients.Api.csproj" />
+    <ProjectReference Include="..\..\data\Lanre.Data.Context\Lanre.Data.Context.csproj" />
   </ItemGroup>
 
 </Project>

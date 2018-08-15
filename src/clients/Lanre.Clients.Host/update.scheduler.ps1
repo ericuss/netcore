@@ -1,0 +1,1 @@
+dotnet ef database update -c Lanre.Data.Context.Contexts.SchedulerContext -p ../../data/Lanre.Data.Context/Lanre.Data.Context.csproj
