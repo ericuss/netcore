@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\data\Lanre.Data.Context\Lanre.Data.Context.csproj" />
     <ProjectReference Include="..\..\infrastructure\Lanre.Infrastructure.Entities\Lanre.Infrastructure.Entities.csproj" />
     <ProjectReference Include="..\..\infrastructure\Lanre.Infrastructure\Lanre.Infrastructure.csproj" />
   </ItemGroup>
