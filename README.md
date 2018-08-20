@@ -12,6 +12,7 @@ Aquí estarán los pasos (links a [./docs/](./docs)):
 4.  [Add_Api_Library](./docs/4_Add_api_library.md)
 5.  [Add_Swagger](./docs/5_Add_swagger.md)
 6.  [Add_Fluent_Validator](./docs/6_Add_fluent_validator.md)
+7.  [Add_Api_Version](./docs/7_Add_Api_Version.md)
 
 
 [<img src="https://www.50-best.com/images/donald_trump_memes/because_your_worth_it.jpg">]
