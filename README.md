@@ -14,6 +14,7 @@ Aquí estarán los pasos (links a [./docs/](./docs)):
 6.  [Add_Fluent_Validator](./docs/6_Add_fluent_validator.md)
 7.  [Add_Api_Version](./docs/7_Add_Api_Version.md)
 8.  [Add_Error_Handling](./docs/8_Add_Error_handling.md)
+9.  [Add_Logs](./docs/9_Add_logs.md)
 
 
 [<img src="https://www.50-best.com/images/donald_trump_memes/because_your_worth_it.jpg">]
