@@ -11,6 +11,7 @@ Aquí estarán los pasos (links a [./docs/](./docs)):
 3.  [Add_User_Secrets](./docs/3_Add_User_Secrets.md)
 4.  [Add_Api_Library](./docs/4_Add_api_library.md)
 5.  [Add_Swagger](./docs/5_Add_swagger.md)
+6.  [Add_Fluent_Validator](./docs/6_Add_fluent_validator.md)
 
 
 [<img src="https://www.50-best.com/images/donald_trump_memes/because_your_worth_it.jpg">]
