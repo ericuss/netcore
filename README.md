@@ -17,6 +17,7 @@ Aquí estarán los pasos (links a [./docs/](./docs)):
 9.  [Add_Logs](./docs/9_Add_logs.md)
 10. [Add_serilog](./docs/10_Add_serilog.md)
 11. [Add_Test_For_Api](./docs/11_Add_test_for_api.md)
+12. [Add_Test_Coverage](./docs/12_Add_test_coverage.md)
 
 
 [<img src="https://www.50-best.com/images/donald_trump_memes/because_your_worth_it.jpg">]
