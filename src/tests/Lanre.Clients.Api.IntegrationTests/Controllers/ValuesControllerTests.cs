@@ -7,9 +7,9 @@ namespace Lanre.Clients.Api.IntegrationTests.Controllers
     using Xunit;
     using Tests.Core;
 
-    public class ControllerCoreBasicApiTests : IntegrationTestBase
+    public class ValuesControllerTests : IntegrationTestBase
     {
-        public ControllerCoreBasicApiTests() : base("/api/values") { }
+        public ValuesControllerTests() : base("/api/values") { }
 
         [Fact]
         public async Task Get_All_And_Return_String_Array()

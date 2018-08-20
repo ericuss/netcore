@@ -5,6 +5,7 @@ namespace Lanre.Clients.Api
     using Microsoft.AspNetCore.Builder;
     using FluentValidation.AspNetCore;
     using Lanre.Clients.Api.Models.Appointment;
+    using System.Reflection;
 
     public static class ConfigurationApi
     {
@@ -13,6 +14,7 @@ namespace Lanre.Clients.Api
             return services
                 .AddCustomApiVersion()
                 .AddMvcCore()
+                    .AddApplicationPart(typeof(Controllers.V1.AppointmentsController).Assembly) // Fix for integration tests
                 .AddJsonFormatters()
                 .AddApiExplorer()
                 .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<AppointmentCreateValidator>())
