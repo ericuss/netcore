@@ -1,4 +1,4 @@
-1.  Creamos un nuevo proyecto en src/data/Lanre.Data.Context para tener nuestra configuracion del context, mappings, migrations, ...
+1.  Creamos un nuevo proyecto en src/data/Lanre.Data.Context para tener nuestra configuración del context, mappings, migrations, ...
 
 2.  Se añaden los nugets de:
     *   Microsoft.AspnetCore.Hosting
@@ -19,7 +19,7 @@
 
 6.  Se añade una interfaz para nuestras dataannotations para los mappings
 
-7.  Se añade una clase y una interfaz de la que hederadan los mappings
+7.  Se añade una clase y una interfaz de la que hederadán los mappings
 
 8.  Se añade una clase para registrar los contextos
 
@@ -39,21 +39,21 @@
 
 15. Se modifica el objeto de Settings para que tenga la connection string
 
-16. Se guarda el commando para añadir migrations en un .ps1:
+16. Se guarda el comando para añadir migrations en un .ps1:
     *   dotnet ef migrations add $migration -c Lanre.Data.Context.Contexts.SchedulerContext -p ../../data/Lanre.Data.Context/Lanre.Data.Context.csproj -o Migrations/Schedule
     *   Hacemos el .ps1 parametizable
     *   Se ejecutará tal que: powershell ./add.migration.scheduler.ps1 -migration "Initial"
 
 17. Se guarda otro para el update database
     *   dotnet ef database update -c Lanre.Data.Context.Contexts.SchedulerContext -p ../../data/Lanre.Data.Context/Lanre.Data.Context.csproj
-    *   Hacemos el ps1 sin parametros
+    *   Hacemos el ps1 sin parámetros
     *   powershell ./update.scheduler.ps1
 
-18. Ejecutamos el ps1 de update y deberiamos ver la BDD con la información del seedData
+18. Ejecutamos el ps1 de update y deberíamos ver la BDD con la información del seedData
 
 19. Modificamos el controller base para que utilice el contexto de ef (de momento sin services ni repository)
 
 20. Ejecutamos y miramos en swagger que el endpoint de appointments
 
 ### Futures 
-*   Hacer un proyecto base que contenga la "Infrastructura" del proyecto de contexto.
+*   Hacer un proyecto base que contenga la "Infraestructura" del proyecto de contexto.
