@@ -8,9 +8,10 @@ namespace Lanre.Data.Context
 
     public static class RegisterContext
     {
-        public static void AddContext(this IServiceCollection services, Settings settings)
+        public static IServiceCollection AddContext(this IServiceCollection services, Settings settings)
         {
             AddDB(services, settings);
+            return services;
         }
 
         private static void AddDB(IServiceCollection services, Settings settings)

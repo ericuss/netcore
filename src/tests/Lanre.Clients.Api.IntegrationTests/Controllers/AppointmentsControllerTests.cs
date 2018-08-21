@@ -64,7 +64,7 @@ namespace Lanre.Clients.Api.IntegrationTests.Controllers
                 await this.PostAsync<AppointmentCreate, AppointmentCreate>(
                      data: dummy_entity,
                      url: $"{this.Url}",
-                     expectedStatusCode: HttpStatusCode.Created
+                     expectedStatusCode: HttpStatusCode.NotFound
                  )
             );
         }
@@ -74,10 +74,18 @@ namespace Lanre.Clients.Api.IntegrationTests.Controllers
             const string expected_description = "This is description";
             var dummy_entity = new AppointmentCreate() { Description = expected_description };
 
-            var entity = await this.PostAsync<AppointmentCreate, AppointmentCreate>(
+            var entityCreated = await this.PostAsync<Appointment, AppointmentCreate>(
                 data: dummy_entity,
                 url: $"{this.Url}",
                 expectedStatusCode: HttpStatusCode.Created
+            );
+
+            Assert.NotNull(entityCreated);
+            Assert.Equal(expected_description, entityCreated.Result.Description);
+
+            var entity = await this.GetAsync<Appointment>($"{this.Url}/{entityCreated.Result.Id}",
+                successStatusCode: true,
+                deserialize: true
             );
 
             Assert.NotNull(entity);
@@ -92,15 +100,15 @@ namespace Lanre.Clients.Api.IntegrationTests.Controllers
             var dummy_entity_create = new AppointmentCreate() { Description = expected_description_create };
             var dummy_entity_update = new AppointmentCreate() { Description = expected_description_update };
 
-            var entity = await this.PostAsync<Appointment, AppointmentCreate>(
+            var entityCreated = await this.PostAsync<Appointment, AppointmentCreate>(
                 data: dummy_entity_create,
                 expectedStatusCode: HttpStatusCode.Created
             );
 
-            Assert.NotNull(entity);
-            Assert.Equal(expected_description_create, entity.Result.Description);
+            Assert.NotNull(entityCreated);
+            Assert.Equal(expected_description_create, entityCreated.Result.Description);
 
-            var id = entity.Result.Id;
+            var id = entityCreated.Result.Id;
 
             var entityUpdated = await this.PutAsync<Appointment, AppointmentCreate>(
                 data: dummy_entity_update,
@@ -109,6 +117,14 @@ namespace Lanre.Clients.Api.IntegrationTests.Controllers
 
             Assert.NotNull(entityUpdated);
             Assert.Equal(expected_description_update, entityUpdated.Result.Description);
+
+            var entity = await this.GetAsync<Appointment>($"{this.Url}/{entityCreated.Result.Id}",
+                successStatusCode: true,
+                deserialize: true
+            );
+
+            Assert.NotNull(entity);
+            Assert.Equal(expected_description_update, entity.Result.Description);
         }
 
         [Fact]
@@ -164,12 +180,19 @@ namespace Lanre.Clients.Api.IntegrationTests.Controllers
 
             var id = entity.Result.Id;
 
-            var entityUpdated = await this.DeleteAsync<Appointment, AppointmentCreate>(
+            var entityDeleted = await this.DeleteAsync<Appointment, AppointmentCreate>(
                 url: $"{this.Url}/{id}"
             );
 
-            Assert.NotNull(entityUpdated);
-            Assert.Equal(expected_description, entityUpdated.Result.Description);
+            Assert.NotNull(entityDeleted);
+            Assert.Equal(expected_description, entityDeleted.Result.Description);
+
+            await this.GetAsync<Appointment>($"{this.Url}/{id}",
+                successStatusCode: false,
+                deserialize: true,
+                expectedStatusCode: HttpStatusCode.NotFound
+            );
+
         }
 
         [Fact]

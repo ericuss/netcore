@@ -1,4 +1,6 @@
 
+using Moq;
+
 namespace Lanre.Clients.Api.UnitTests.Controllers
 {
     using System;

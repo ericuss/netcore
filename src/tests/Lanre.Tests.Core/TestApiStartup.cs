@@ -1,4 +1,7 @@
 ﻿
+using Lanre.Data.Context.Contexts;
+using Microsoft.EntityFrameworkCore;
+
 namespace Lanre.Tests.Core
 {
     using Microsoft.AspNetCore.Builder;
@@ -13,6 +16,7 @@ namespace Lanre.Tests.Core
 
             services
                 .ConfigureServicesApi()
+                .AddDbContext<SchedulerContext>(x => x.UseInMemoryDatabase("Schedule"))
                 .AddSingleton<ICustomMemoryCache, CustomMemoryCache>()
                 ;
         }
