@@ -3,7 +3,7 @@
     *   Test.Core para las bases de las configuraciones de los tests
     *   Unit Tests
     *   Integration Tests
-3.  Los nugets que necesitaremos(o no) serán los de:
+3.  Los nugets que necesitaremos (o no) serán los de:
     *   Microsoft.AspNetCore.TestHost
     *   Microsoft.NET.Test.Sdk
     *   Moq
