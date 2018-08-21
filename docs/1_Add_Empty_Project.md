@@ -16,13 +16,13 @@
 
 -   Tendremos una carpeta de /docs para toda la documentación del proyecto
 
-1.  Creamos un proyecto web vacio en /src/clients/Lanre.Clients.Host
+2.  Creamos un proyecto web vacío en /src/clients/Lanre.Clients.Host
 
     -   Lanre será nuestro nombre de proyecto
 
     -   Se llama host porque será el que lance nuestra aplicación y tendrá las
         referencias pertinentes a los demás proyectos
 
-    -   Sobretodo nos tenemos que fijar en que no esté el AspnetCore.All
+    -   Sobre todo nos tenemos que fijar en que no esté el AspnetCore.All
 
-2.  Añadimos en sln en la raíz.
+3.  Añadimos en sln en la raíz.
