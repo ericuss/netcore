@@ -1,4 +1,4 @@
-Making netcore great again
+Bob the builder: bulding net core app
 ==========================
 
 Construiremos una aplicación de net core poco a poco. Cada branch será un
@@ -11,4 +11,4 @@ Aquí estarán los pasos (links a [./docs/](./docs)):
 3.  [Add_User_Secrets](./docs/3_Add_User_Secrets.md)
 
 
-[<img src="https://www.50-best.com/images/donald_trump_memes/because_your_worth_it.jpg">]
+[<img src="http://pbskids.org/bobthebuilder/cdn/home/images/mobile/hero-mobile.jpg">]
