@@ -4,4 +4,4 @@
 3.  Se ejecuta el commando y funciona
     *   dotnet watch test Lanre.Clients.Api.Tests.csproj -p:CollectCoverage=true
     *   dotnet test Lanre.Clients.Api.Tests.csproj -p:CollectCoverage=true
-4.  Se acualiza el .gitignore
+4.  Se actualiza el .gitignore
